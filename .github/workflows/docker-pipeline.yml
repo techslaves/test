@@ -109,6 +109,14 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      # Attest Build Provenance
+      - name: Attest Build Provenance
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.build-and-push.outputs.digest }}
+          push-to-registry: true
+
       # Sign Image
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.3.0
