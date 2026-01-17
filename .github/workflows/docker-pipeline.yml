@@ -15,7 +15,7 @@ jobs:
   build-secure-sign:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
       security-events: write
       id-token: write
